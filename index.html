@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>İndirme Butonları</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #121212;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .button-container {
+    display: flex;
+    gap: 20px;
+  }
+  .btn {
+    background: linear-gradient(135deg, #ff6a00, #ee0979);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 105, 135, 0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 105, 135, 0.7);
+  }
+  .btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 10px rgba(255, 105, 135, 0.4);
+  }
+</style>
+</head>
+<body>
+
+<div class="button-container">
+  <button class="btn" id="downloadExe">EXE İndir</button>
+  <button class="btn" id="downloadApk">APK İndir</button>
+</div>
+
+<script>
+  document.getElementById('downloadExe').addEventListener('click', () => {
+    const exeUrl = 'Çok Yönlü Kodlama Çevirici.exe'; // Aynı dizindeki EXE dosyası
+    downloadFile(exeUrl);
+  });
+
+  document.getElementById('downloadApk').addEventListener('click', () => {
+    const apkUrl = 'Çok Yönlü Kodlama Çevirici.apk'; // Aynı dizindeki APK dosyası
+    downloadFile(apkUrl);
+  });
+
+  function downloadFile(url) {
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = url.split('/').pop();
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+</script>
+
+</body>
+</html>
